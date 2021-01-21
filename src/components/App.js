@@ -1,0 +1,48 @@
+import { Component, Fragment } from 'react'
+import Nav from './Nav'
+import Login from './Login'
+import HomePage from './HomePage'
+import PollPage from './PollPage'
+import { connect } from 'react-redux'
+import { handleInitialData } from '../actions/shared'
+import { LoadingBar } from 'react-redux-loading'
+import { BrowserRouter as Router, Route } from 'react-router-dom' 
+
+class App extends Component {
+
+  componentDidMount(){
+    this.props.dispatch(handleInitialData())
+  }
+
+  render(){
+    return (
+      <Router>
+        <Fragment>
+          <LoadingBar/>
+          <div className='container'>
+            <Nav/>
+            {this.props.users === null
+              ? null 
+              : this.props.authedUser === null
+              ? <Login/>
+              : <div>
+                  <Route path='/' exact component={HomePage}/>
+                  <Route path='/leaderboard' exact component={HomePage}/>
+                  <Route path='/poll/:id' component={PollPage}/>
+                </div>
+            }
+          </div>
+        </Fragment>
+      </Router>
+    );
+  }
+}
+
+function mapStateToProps ({ authedUser, users }) {
+  return {
+    users: Object.keys(users).length === 0 ? null : users,
+    authedUser,
+  }
+}
+
+export default connect(mapStateToProps)(App);
