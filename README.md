@@ -1,10 +1,3 @@
-Would You Rather
+# would-you-rather
+React/Redux project, allow users to ask and answer a two option would you rather question.
 
-Login
-    selectable list of users
-
-Main Page
-    list of unanswered questions ordered by how recent they are newest being closer to the top
-
-Leaderboards
-    
