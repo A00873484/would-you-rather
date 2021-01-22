@@ -211,3 +211,30 @@ body{
 .centerFont{
   text-align: center;
 }
+
+.blank-box{
+  border: 1px solid #dad7d7;
+}
+
+.option-input{
+  width:calc(100% - 15px);
+  padding:5px;
+  border-radius: 5px;
+  border: 1px solid #dad7d7;
+}
+
+.break-line{
+  border-bottom: 1px solid #dad7d7;
+  height:0px;
+  text-align: center;
+  width:100%;
+  margin:10px;
+}
+
+.v-aligned-col{
+  display:flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  
+}

@@ -3,6 +3,7 @@ import Nav from './Nav'
 import Login from './Login'
 import HomePage from './HomePage'
 import PollPage from './PollPage'
+import NewQuestion from './NewQuestion'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import { LoadingBar } from 'react-redux-loading'
@@ -28,6 +29,7 @@ class App extends Component {
               : <div>
                   <Route path='/' exact component={HomePage}/>
                   <Route path='/leaderboard' exact component={HomePage}/>
+                  <Route path='/question' exact component={NewQuestion}/>
                   <Route path='/poll/:id' component={PollPage}/>
                 </div>
             }
