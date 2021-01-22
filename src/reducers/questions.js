@@ -1,5 +1,5 @@
 import { RECEIVE_QUESTIONS } from '../actions/questions'
-import { SAVE_QUESTION_ANSWER } from '../actions/shared'
+import { SAVE_QUESTION_ANSWER, SAVE_QUESTION } from '../actions/shared'
 
 export default function questions (state={}, action) {
     switch(action.type){
@@ -9,15 +9,22 @@ export default function questions (state={}, action) {
                 ...action.questions
             }
         case SAVE_QUESTION_ANSWER:
+            const { qid, answer, authedUser } = action
             return {
                 ...state,
-                [action.qid]:{
-                    ...state[action.qid],
-                    [action.answer]:{
-                        ...state[action.qid][action.answer],
-                        votes:state[action.qid][action.answer].votes.concat(action.authedUser)
+                [qid]:{
+                    ...state[qid],
+                    [answer]:{
+                        ...state[qid][answer],
+                        votes:state[qid][answer].votes.concat([authedUser])
                     }
                 }
+            }
+        case SAVE_QUESTION:
+            const {question} = action
+            return {
+                ...state,
+                [question.id]: question,
             }
         default:
             return state

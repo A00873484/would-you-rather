@@ -5,6 +5,7 @@ import { setAuthedUser } from './authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
 export const SAVE_QUESTION_ANSWER = 'SAVE_QUESTION_ANSWER'
+export const SAVE_QUESTION = 'SAVE_QUESTION'
 
 export function handleInitialData () {
     return (dispatch) => {
@@ -25,5 +26,12 @@ export function saveUsersAnswer ({ answer, qid, authedUser }) {
         qid,
         answer,
         authedUser,
+    }
+}
+
+export function saveUsersQuestion (question) {
+    return {
+        type: SAVE_QUESTION,
+        question
     }
 }
