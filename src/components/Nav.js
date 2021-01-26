@@ -1,27 +1,47 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { NavLink, withRouter } from 'react-router-dom'
 
 function Nav ({history}) {
     const path = history.location.pathname
     const selected = {color:'white'}
-
+    const [logout, setLogout] = useState(false)
+    const [home, setHome] = useState(false)
+    const [newQuestion, setNewQuestion] = useState(false)
+    const [leaderboard, setLeaderboard] = useState(false)
     return (
         <nav className='nav'>
             <ul className="menu">
-                <li className={path === '/'?'trapazoid':''}>
-                    <NavLink to='/' exact activeClassName='active' className="menu-tab" style={path === '/' ? selected : {}}>
+                <li onMouseEnter={() => setHome(true)}
+                    onMouseLeave={() => setHome(false)}
+                    className={path === '/' || home?'trapazoid':''}>
+                    <NavLink to='/' exact activeClassName='active' className="menu-tab" style={path === '/' || home ? selected : {}}>
                         Home
                     </NavLink>
                 </li>
-                <li className={path === '/question'?'trapazoid':''} >
-                    <NavLink to='/question' activeClassName='active' className="menu-tab" style={path === "/question" ? selected : {}}>
+                <li onMouseEnter={() => setNewQuestion(true)}
+                    onMouseLeave={() => setNewQuestion(false)}
+                    className={path === '/question' || newQuestion?'trapazoid':''} >
+                    <NavLink to='/question' activeClassName='active' className="menu-tab" style={path === "/question" || newQuestion ? selected : {}}>
                         New Question
                     </NavLink>
                 </li>
-                <li className={path === '/leaderboard'?'trapazoid':''} >
-                    <NavLink to='/leaderboard' activeClassName='active' className="menu-tab" style={path === '/leaderboard' ? selected : {}}>
+                <li onMouseEnter={() => setLeaderboard(true)}
+                    onMouseLeave={() => setLeaderboard(false)}
+                    className={path === '/leaderboard' || leaderboard?'trapazoid':''} >
+                    <NavLink to='/leaderboard' activeClassName='active' className="menu-tab" style={path === '/leaderboard' || leaderboard ? selected : {}}>
                         Leader Board
                     </NavLink>
+                </li>
+            </ul>
+            <ul className="menu" style={{justifyContent:'flex-end', flexGrow:'1'}}>
+                <li className=""></li>
+                <li onMouseEnter={() => setLogout(true)}
+                    onMouseLeave={() => setLogout(false)}
+                    className={ logout ? 'trapazoid' : '' }>
+                        <span className="menu-tab"
+                            style={ logout ? selected : {}}>
+                                Logout
+                        </span>
                 </li>
             </ul>
         </nav>
