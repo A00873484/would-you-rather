@@ -31,6 +31,6 @@ function mapStateToProps ({ users }) {
     return {
       users,
     }
-  }
+}
 
 export default connect(mapStateToProps)(Login)

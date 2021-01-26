@@ -18,10 +18,17 @@ li {
 }
 
 .avatar-container{
-  height: 70px;
-  width: 70px;
+  height: 100px;
+  width: 100px;
   padding: 0 15px 0 15px;
   border-right: 1px solid #dad7d7;
+}
+
+.result-container{
+  height: 100px;
+  width: 100px;
+  padding: 0 15px 0 15px;
+  border-left: 1px solid #dad7d7;
 }
 
 .vertical-center {
@@ -160,6 +167,11 @@ body{
 .center-text {
   text-align: center;
 }
+
+.text-align-right {
+  text-align: right;
+}
+
 .big-text {
   font-size: x-large;
 }
@@ -174,6 +186,21 @@ body{
   right:-10px;
   color:white;
   font-size: 10px;
+  word-wrap: break-word;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.green-score{
+  background-color: #269c57;
+  border-radius: 50px;
+  width: 40px;
+  height:40px;
+  color:white;
+  font-size: 15px;
   word-wrap: break-word;
   text-align: center;
   display: flex;
@@ -237,4 +264,27 @@ body{
   align-content: center;
   flex-direction: row;
   
+}
+
+.corner-tab{
+  position: absolute;
+  top: -4px; bottom: 0%; left: -14px; right: 0%;
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 20px solid #dad7d7;
+  -ms-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.corner-image{
+  position: absolute;
+  top: 3px; bottom: 0%; left: 3px; right: 0%;
+  width: 9px; 
+  height: 9px; 
+}
+
+.contain-absolute{
+  position: relative;
 }
