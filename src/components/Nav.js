@@ -1,13 +1,21 @@
 import React, {useState} from 'react'
 import { NavLink, withRouter } from 'react-router-dom'
+import { setAuthedUser } from '../actions/authedUser'
+import { connect } from 'react-redux'
 
-function Nav ({history}) {
+function Nav ({history, dispatch}) {
     const path = history.location.pathname
     const selected = {color:'white'}
     const [logout, setLogout] = useState(false)
     const [home, setHome] = useState(false)
     const [newQuestion, setNewQuestion] = useState(false)
     const [leaderboard, setLeaderboard] = useState(false)
+
+    const handleLogout = () => {
+        console.log('handleLogout')
+        dispatch(setAuthedUser(null))
+    }
+
     return (
         <nav className='nav'>
             <ul className="menu">
@@ -39,7 +47,8 @@ function Nav ({history}) {
                     onMouseLeave={() => setLogout(false)}
                     className={ logout ? 'trapazoid' : '' }>
                         <span className="menu-tab"
-                            style={ logout ? selected : {}}>
+                            style={ logout ? selected : {}}
+                            onClick={handleLogout}>
                                 Logout
                         </span>
                 </li>
@@ -48,4 +57,4 @@ function Nav ({history}) {
     )
 }
 
-export default withRouter(Nav)
+export default withRouter(connect()(Nav))
