@@ -23,7 +23,7 @@ class LeaderBoard extends Component {
                                 {
                                     index < 3 && <div className="contain-absolute">
                                         <div className="corner-tab"></div>
-                                        <img className="corner-image" src={`../trophy${index+1}.png`}/>
+                                        <img className="corner-image" src={`./trophy${index+1}.png`}/>
                                     </div>
 
                                 }
