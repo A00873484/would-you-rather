@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { saveUsersAnswer } from '../actions/shared'
 import { saveQuestionAnswer } from '../utils/api'
+import AvatarSection from './AvatarSection'
 
 class Poll extends Component {
 
@@ -32,15 +33,7 @@ class Poll extends Component {
             <div className="poll">
                 <div className="poll-head padding">{name}</div>
                 <div className="poll-body">
-                    <div className='vertical-center'>
-                        <div className="avatar-container">
-                            <img 
-                                src={avatarURL}
-                                alt={`Avatar of ${name}`}
-                                className="avatar"
-                            />
-                        </div>
-                    </div>
+                    <AvatarSection url={avatarURL} name={name}/>
                     <div className="poll-info">
                         <div className="bold big-text">Would you rather</div>
                         

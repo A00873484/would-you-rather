@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import AvatarSection from './AvatarSection'
 import Poll from './Poll'
 
 class LeaderBoard extends Component {
@@ -28,16 +29,8 @@ class LeaderBoard extends Component {
                                 }
                                 <div className="poll-body">
                                     
-                                    <div className='vertical-center'>
-                                        <div className="avatar-container">
-                                            <img 
-                                                src={avatarURL}
-                                                alt={`Avatar of ${name}`}
-                                                className="avatar"
-                                            />
-                                        </div>
-                                    </div>
-                                    
+                                    <AvatarSection url={avatarURL} name={name}/>
+
                                     <div className="poll-info">
                                         <div className="bold padding">{name}</div>
                                         <div className="padding" style={{display:'flex'}}><span>Answered questions</span><span className="text-align-right" style={{flexGrow: 1}}>{Object.keys(answers).length}</span></div>

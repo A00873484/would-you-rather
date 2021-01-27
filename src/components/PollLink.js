@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import AvatarSection from './AvatarSection'
 
 class PollLink extends Component {
 
     viewPoll = (e, id) => {
         e.preventDefault()
-        this.props.history.push(`/poll/${id}`)
+        this.props.history.push(`/questions/${id}`)
     }
 
     render(){
@@ -15,16 +16,8 @@ class PollLink extends Component {
             <div className="poll">
                 <div className="poll-head padding">{name}</div>
                 <div className="poll-body">
-                    <div className='vertical-center'>
-                        <div className="avatar-container">
-                            <img 
-                                src={avatarURL}
-                                alt={`Avatar of ${name}`}
-                                className="avatar"
-                            />
-                        </div>
-                    </div>
-                    <div className="poll-info">
+                    <AvatarSection url={avatarURL} name={name}/>
+                    <div className="poll-info vertical-center" style={{alignItems:'baseline'}}>
                         <div className="bold">Would you rather</div>
                         
                         <div className="padding">{this.props.optionSummary}</div>
@@ -40,7 +33,6 @@ class PollLink extends Component {
 
 function mapStateToProps({users, questions}, {id}){
     const {author} = questions[id]
-    console.log(questions[id])
     return {
         author:users[author],
         optionSummary:`...${questions[id].optionOne.text.substring(0, 15)}...`,

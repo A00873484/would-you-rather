@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import AvatarSection from './AvatarSection'
 
 function Result({votes, total, option, picked}){
     const box = picked ?{
@@ -11,8 +12,6 @@ function Result({votes, total, option, picked}){
         border:"2px solid #dad7d7",
         margin:'10px',
     }
-    console.log(votes)
-    console.log(total)
     return (
         <div className='padding relative' style={box}>
             {
@@ -43,15 +42,7 @@ class PollResults extends Component {
             <div className="poll">
                 <div className="poll-head padding bold">Asked by {name}</div>
                 <div className="poll-body">
-                    <div className='vertical-center'>
-                        <div className="avatar-container">
-                            <img 
-                                src={avatarURL}
-                                alt={`Avatar of ${name}`}
-                                className="avatar"
-                            />
-                        </div>
-                    </div>
+                    <AvatarSection url={avatarURL} name={name}/>
                     <div className="poll-info">
                         <div className="bold big-text">Results:</div>
                         <Result votes={optionOne.votes.length} 

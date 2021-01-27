@@ -15,8 +15,6 @@ function Nav ({history, dispatch, user}) {
         dispatch(setAuthedUser(null))
     }
 
-    console.log(user)
-
     return (
         <nav className='nav'>
             <ul className="menu">
@@ -29,8 +27,8 @@ function Nav ({history, dispatch, user}) {
                 </li>
                 <li onMouseEnter={() => setNewQuestion(true)}
                     onMouseLeave={() => setNewQuestion(false)}
-                    className={'vertical-center '+(path === '/question' || newQuestion?'trapazoid':'')} >
-                    <NavLink to='/question' activeClassName='active' className="menu-tab" style={path === "/question" || newQuestion ? selected : {}}>
+                    className={'vertical-center '+(path === '/add' || newQuestion?'trapazoid':'')} >
+                    <NavLink to='/add' activeClassName='active' className="menu-tab" style={path === "/add" || newQuestion ? selected : {}}>
                         New Question
                     </NavLink>
                 </li>

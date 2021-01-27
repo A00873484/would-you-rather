@@ -20,8 +20,13 @@ li {
 .avatar-container{
   height: 100px;
   width: 100px;
-  padding: 0 15px 0 15px;
+  padding: 15px;
+  
+}
+
+.right-side-divider{
   border-right: 1px solid #dad7d7;
+  height:80%;
 }
 
 .result-container{

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
-import Select, { components } from 'react-select';
+import Select from 'react-select';
 
 class Login extends Component {
 
@@ -12,7 +12,6 @@ class Login extends Component {
     render(){
         const { users } = this.props
         const options = Object.keys(users).map( (key)=>( {value:key, label:users[key].name} ) )
-        console.log(options)
         return <div className="restrict">
                 <div className="poll-head padding top-indent center-text">
                     <span className="bold">Welcome to the Would You Rather App!</span>
