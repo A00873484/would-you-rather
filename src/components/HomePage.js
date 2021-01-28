@@ -21,7 +21,7 @@ class HomePage extends Component {
     }
 
     render(){
-        const {answered, unanswered} = this.props
+        const {answered, unanswered, sorted} = this.props
         const list = this.state.view1 ? unanswered : answered
         const selectedView = {background:'#dad7d7', color:'rgb(66, 165, 115)'}
         return (
@@ -36,8 +36,10 @@ class HomePage extends Component {
                 </div>
                 <ul className="body">
                     {
-                        Object.keys(list).map((key)=>{
-                            return <li key={list[key].id}><PollLink id={list[key].id}/></li>
+                        sorted.map((key)=>{
+                            if(list[key])
+                                return <li key={list[key].id}><PollLink id={list[key].id}/></li>
+                            return null
                         })
                     }
                 </ul>
@@ -56,10 +58,15 @@ function mapStateToProps ({ authedUser, questions, users }) {
         delete unanswered[answer]  
     })
 
+    const sorted = Object.keys(questions).sort((a, b)=>{
+        return questions[b].timestamp - questions[a].timestamp
+    })
+
     return {
         answered,
         unanswered,
         authedUser,
+        sorted,
     }
 }
 

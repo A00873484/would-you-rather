@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import AvatarSection from './AvatarSection'
-import Poll from './Poll'
 
 class LeaderBoard extends Component {
     render(){
